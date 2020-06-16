@@ -1,0 +1,93 @@
+[gd_scene load_steps=13 format=2]
+
+[ext_resource path="res://Player.gd" type="Script" id=1]
+[ext_resource path="res://Assets/Player/jump_up.png" type="Texture" id=2]
+[ext_resource path="res://Assets/Player/run01.png" type="Texture" id=3]
+[ext_resource path="res://Assets/Player/run02.png" type="Texture" id=4]
+[ext_resource path="res://Assets/Player/run03.png" type="Texture" id=5]
+[ext_resource path="res://Assets/Player/jumping.png" type="Texture" id=6]
+[ext_resource path="res://Assets/Sons/Rickaiamajump.wav" type="AudioStream" id=7]
+[ext_resource path="res://Assets/Sons/Rickaiamadamage.wav" type="AudioStream" id=8]
+
+[sub_resource type="SpriteFrames" id=1]
+animations = [ {
+"frames": [ ExtResource( 2 ) ],
+"loop": true,
+"name": "Idle",
+"speed": 5.0
+}, {
+"frames": [ ExtResource( 3 ), ExtResource( 4 ), ExtResource( 5 ) ],
+"loop": true,
+"name": "Run",
+"speed": 8.0
+}, {
+"frames": [ ExtResource( 6 ) ],
+"loop": true,
+"name": "Jump",
+"speed": 5.0
+} ]
+
+[sub_resource type="CapsuleShape2D" id=2]
+radius = 220.168
+height = 939.123
+
+[sub_resource type="RectangleShape2D" id=3]
+extents = Vector2( 139.875, 9.69153 )
+
+[sub_resource type="CapsuleShape2D" id=4]
+radius = 242.557
+height = 917.934
+
+[node name="Player" type="KinematicBody2D"]
+position = Vector2( 0, -0.568787 )
+scale = Vector2( 0.105283, 0.105283 )
+script = ExtResource( 1 )
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="Sprite" type="AnimatedSprite" parent="."]
+position = Vector2( 124.972, -174.005 )
+scale = Vector2( 4.26221, 3.69777 )
+frames = SubResource( 1 )
+animation = "Run"
+frame = 1
+
+[node name="Shape_principal" type="CollisionShape2D" parent="."]
+position = Vector2( 54.3973, -175.906 )
+rotation = -0.00912499
+shape = SubResource( 2 )
+
+[node name="Camera2D" type="Camera2D" parent="."]
+position = Vector2( 18.9963, 0 )
+offset = Vector2( 20, 20 )
+current = true
+zoom = Vector2( 0.7, 0.7 )
+limit_top = -20
+limit_bottom = 600
+smoothing_enabled = true
+
+[node name="pes" type="Area2D" parent="."]
+collision_layer = 4
+collision_mask = 4
+
+[node name="Shape" type="CollisionShape2D" parent="pes"]
+position = Vector2( 95.3936, 526.592 )
+shape = SubResource( 3 )
+
+[node name="dano" type="Area2D" parent="."]
+collision_layer = 4
+collision_mask = 4
+
+[node name="Shape_dano" type="CollisionShape2D" parent="dano"]
+position = Vector2( 54.0468, -198.518 )
+rotation = -0.00932503
+shape = SubResource( 4 )
+
+[node name="jumpFx" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 7 )
+
+[node name="dmgFx" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 8 )
+[connection signal="body_entered" from="pes" to="." method="_on_pes_body_entered"]
+[connection signal="body_entered" from="dano" to="." method="_on_dano_body_entered"]

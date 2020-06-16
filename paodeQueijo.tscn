@@ -1,0 +1,26 @@
+[gd_scene load_steps=5 format=2]
+
+[ext_resource path="res://paodeQueijo.gd" type="Script" id=1]
+[ext_resource path="res://Assets/paodequeijo.png" type="Texture" id=2]
+[ext_resource path="res://eat.wav" type="AudioStream" id=3]
+
+[sub_resource type="CircleShape2D" id=1]
+radius = 524.743
+
+[node name="paodeQuejo" type="Area2D"]
+scale = Vector2( 0.02, 0.02 )
+script = ExtResource( 1 )
+
+[node name="Sprite" type="Sprite" parent="."]
+position = Vector2( 16.0639, 77.1071 )
+scale = Vector2( 2.31775, 2.2299 )
+texture = ExtResource( 2 )
+
+[node name="shape" type="CollisionShape2D" parent="."]
+position = Vector2( 147.789, 83.533 )
+shape = SubResource( 1 )
+
+[node name="eat" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 3 )
+[connection signal="body_entered" from="." to="." method="_on_ourico_body_entered"]
+[connection signal="finished" from="eat" to="." method="_on_eat_finished"]

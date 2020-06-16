@@ -1,0 +1,15 @@
+[gd_scene load_steps=2 format=2]
+
+[ext_resource path="res://Assets/Background/city_day.jpg" type="Texture" id=1]
+
+[node name="ParallaxBackground" type="ParallaxBackground"]
+
+[node name="ParallaxLayer" type="ParallaxLayer" parent="."]
+motion_scale = Vector2( 1.5, 1 )
+motion_mirroring = Vector2( 1330, 0 )
+
+[node name="Sprite" type="Sprite" parent="ParallaxLayer"]
+position = Vector2( 4.20358, 3.30931 )
+scale = Vector2( 0.738438, 0.701729 )
+texture = ExtResource( 1 )
+centered = false

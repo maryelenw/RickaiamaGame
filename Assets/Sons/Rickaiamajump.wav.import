@@ -1,0 +1,21 @@
+[remap]
+
+importer="wav"
+type="AudioStreamSample"
+path="res://.import/Rickaiamajump.wav-5687a86d5eb28776871dd9b090c3995e.sample"
+
+[deps]
+
+source_file="res://Assets/Sons/Rickaiamajump.wav"
+dest_files=[ "res://.import/Rickaiamajump.wav-5687a86d5eb28776871dd9b090c3995e.sample" ]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=true
+edit/normalize=true
+edit/loop=false
+compress/mode=0
